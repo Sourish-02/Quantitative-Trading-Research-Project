@@ -2,9 +2,9 @@
 
 ## Overview
 
-This repository documents my work throughout a Quantitative Trading Research project focused on developing systematic trading strategies using statistical analysis, feature engineering, and machine learning.
+This repository documents my work throughout the Quantitative Trading Research project conducted as part of the CAIC Summer of Technology program.
 
-The project progresses from classical rule-based trading strategies to predictive modelling for financial time series. Each week consists of theory notes, implementation notebooks, experiment reports, and performance analysis.
+The project explores the complete quantitative trading pipeline, progressing from statistical analysis of financial time series to machine learning-based alpha prediction and finally to portfolio construction and optimization. Each week contains implementation notebooks, technical reports, experiments, and performance analysis.
 
 ---
 
@@ -66,6 +66,25 @@ The project progresses from classical rule-based trading strategies to predictiv
 * Hyperparameter optimisation
 * Ensemble forecasting model
 * Competition submission pipeline
+
+---
+
+### Week 3 — Portfolio Construction & Alpha Optimization
+
+**Topics Covered**
+* Cross-Sectional Factor Models
+* Information Coefficient (IC) Analysis
+* Market-Neutral Portfolio Construction
+* Volatility-Adjusted Position Sizing
+* Dollar Neutrality
+* EWMA Feature Smoothing
+* Alpha Signal Optimization
+
+**Deliverables**
+
+* Global IC weighted multi-factor portfolio
+* Market-neutral long-short strategy
+* Portfolio optimization under position constraints
 
 ---
 
