@@ -1,3 +1,5 @@
+# Week 2 Report — Machine Learning for Alpha Prediction
+
 ## Objective
 The objective of this week's project was to develop machine learning models capable of predicting future returns through feature engineering, statistical analysis, and supervised learning.
 
