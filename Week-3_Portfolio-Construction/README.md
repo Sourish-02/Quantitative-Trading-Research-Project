@@ -1,3 +1,4 @@
+# Week 3 Report - Portfolio Construction
 
 ## Objective
 The objective of this week's project was to construct a market-neutral long-short equity portfolio using technical indicators and optimize its risk-adjusted performance while satisfying portfolio constraints.
