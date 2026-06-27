@@ -1,0 +1,60 @@
+Strategy Description — Sourish Srivastava, 2025MT61515
+====================================
+
+1. Core Idea
+------------
+The strategy aims to exploit persistent cross-sectional relationships between technical indicators and next-day stock returns. 
+Stocks are ranked daily using a weighted combination of momentum, mean-reversion, volume, and volatility-related factors. 
+The weights are proportional to each factor's historical Information Coefficient (IC). 
+Positions are then scaled by estimated risk to construct a dollar-neutral long-short portfolio.
+
+2. Signal Construction
+-----------------------
+The strategy combines the following technical indicators:
+Trend: trend_1_3, trend_5_20, trend_20_60
+Momentum: relative_strength_index, stochastic_oscillator, williams_r, ultimate_oscillator, commodity_channel_index, chande_momentum_oscillator, trix, macd
+Volume: volume, on_balance_volume, accumulation_distribution_index, chaikin_money_flow, ease_of_movement
+Volatility: average_true_range (used as a predictive feature), with volatility_20 and volatility_60 used for risk adjustment.
+
+SIGNAL COMBINATION: 
+Each factor is transformed into a cross-sectional percentile rank to reduce sensitivity to outliers and differences in scale. 
+The ranked factors are combined using fixed weights proportional to their historical cross-sectional Information Coefficients (ICs), 
+with the sign determined by the historical predictive direction of each factor.
+
+FEATURE SMOOTHING:
+Instead of using only the most recent observation, each feature is smoothed using a 10-day Exponentially Weighted Moving Average (EWMA) computed over the recent history. 
+This reduces day-to-day noise while allowing the signals to adapt gradually to changing market conditions. 
+During experimentation, EWMA smoothing significantly reduced portfolio turnover while slightly improving risk-adjusted performance.
+
+3. Portfolio Construction
+---------------------------
+Stocks are assigned a continuous alpha score obtained from the weighted combination of ranked factors.
+To control risk, the alpha score is divided by the square root of the average of the 20-day and 60-day realized volatility estimates, reducing exposure to more volatile stocks.
+The resulting scores are centered to ensure zero net exposure before portfolio construction.
+Positive and negative scores are separated into long and short portfolios. 
+Each side is independently normalized to 50% gross exposure, producing a dollar-neutral portfolio with total gross exposure equal to one. 
+Individual positions are capped at ± 10% to satisfy the constraints, after which both long and short books are renormalized.
+
+4. Risk Controls
+------------------
+a- Dollar-neutral portfolio construction.
+b- Gross exposure fixed at 100%.
+c- Individual position limit of ±10%.
+d- Volatility-adjusted position sizing using 20-day and 60-day realized volatility.
+e- EWMA smoothing of features to reduce unnecessary portfolio turnover and improve signal stability.
+
+5. Known Limitations / Things You'd Try Next
+-----------------------------------------------
+Several adaptive weighting approaches were investigated, including 
+a- rolling Information Coefficients, 
+b- rolling ICs with fixed global factor directions 
+c- Information Ratio-based weighting 
+While these methods appeared promising initially, testing showed that they did not outperform the simpler global IC weighting on the training data.
+Future work would focus on improving the alpha itself rather than dynamically adjusting factor weights. 
+Possibilities include economically motivated factor interaction terms, confidence-based position sizing, and hyperparameter tuning of smoothing windows and risk-adjustment parameters.
+
+6. Backtest Summary (training period)
+-----------------------------------------
+- Net Sharpe Ratio: 1.0135
+- Gross Sharpe Ratio: 1.1837
+- Turnover: 29.58%
