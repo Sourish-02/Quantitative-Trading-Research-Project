@@ -95,6 +95,6 @@ Research findings, strategy evaluations, model performance metrics, feature impo
 ---
 
 ## Acknowledgements
-This project was completed as part of the CAIC Summer of Technology – Computer Vision Track. The assignments, datasets, and learning roadmap were provided by the organizers, while all implementations, experiments, notes, reports, and analyses in this repository were completed by me. Official course repository: <<[Link](https://github.com/Priyesha710/CSOT-Quant/)>>
+This project was completed as part of the CAIC Summer of Technology – Quantitative Trading Track. The assignments, datasets, and learning roadmap were provided by the organizers, while all implementations, experiments, notes, reports, and analyses in this repository were completed by me. Official course repository: <<[CSOT-Quant](https://github.com/Priyesha710/CSOT-Quant/)>>
 
 
