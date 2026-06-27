@@ -1,3 +1,5 @@
+# Week 1 Report — Trend Following Strategy
+
 ## Objective
 The objective of this week's project was to investigate whether a simple trend-following strategy based on moving average crossovers could outperform a passive buy-and-hold investment while reducing portfolio risk.
 
